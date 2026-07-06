@@ -1,0 +1,7 @@
+[Unit]
+Description=monitor
+[Service]
+ExecStart=/usr/bin/python3 /home/yash/dashboard/monitor.py
+Restart=always
+[Install]
+WantedBy=multi-user.target

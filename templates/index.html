@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Monitor Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.5;
+        }
+        h1 { font-size: 24px; color: #111111; font-weight: 600; margin-bottom: 5px; }
+        h2 { font-size: 18px; color: #111111; font-weight: 600; margin-top: 30px; }
+        p { color: #666666; margin-top: 0; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        th {
+            background-color: #f9f9f9;
+            color: #555555;
+            font-weight: 600;
+        }
+        tr:hover { background-color: #f5f5f5; } /* Subtly highlights rows on hover */
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>System Performance Dashboard</h1>
+    <p>Live system metrics captured from data.json</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>CPU Usage</th>
+                <th>RAM Usage</th>
+                <th>Disk Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for timestamp, stats in data.items() %}
+            <tr>
+                <td>{{ timestamp }}</td>
+                <td>{{ stats.cpu }}%</td>
+                <td>{{ stats.ram }}%</td>
+                <td>{{ stats.disk }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Performance Visualization</h2>
+    <img src="/dashboard.png" alt="System performance chart">
+
+</body>
+</html>
